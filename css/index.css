@@ -386,7 +386,7 @@ textarea {
 
 .card-one {
     top: 60px;
-    right: 5px;
+    left: 5px;
 
     color: #ff9f00;
 }
@@ -399,8 +399,29 @@ textarea {
 }
 
 .card-three {
-    top: 200px;
-    right: -15px;
+    top: 120px;
+    left: -15px;
+
+    color: var(--accent)\;
+}
+
+.card-four {
+    top: 60px;
+    right: 0px;
+
+    color: wheat;
+}
+
+.card-five {
+    top: 160px;
+    right: -30px;
+
+    color: green;
+}
+
+.card-six {
+    top: 300px;
+    right: -50px;
 
     color: var(--accent);
 }
