@@ -114,9 +114,7 @@ animatedElements.forEach(function (element) {
    CONTACT FORM
 ========================================================= */
 
-const contactForm =
-    document.querySelector(".contact-form");
-
+const contactForm = document.querySelector(".contact-form");
 
 if (contactForm) {
 
@@ -124,14 +122,26 @@ if (contactForm) {
 
         event.preventDefault();
 
-        alert(
-            "Thank you! Your message has been received."
-        );
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const subject = document.getElementById("subject").value.trim();
+        const message = document.getElementById("message").value.trim();
 
-        contactForm.reset();
+        const whatsappNumber = "918349994418";
 
+        const whatsappMessage =
+            "Hello, Om.\n\n" +
+            "Name: " + name + "\n" +
+            "Email: " + email + "\n" +
+            "Subject: " + subject + "\n" +
+            "Message: " + message;
+
+        const whatsappURL ="https://wa.me/" +whatsappNumber +"?text=" +encodeURIComponent(whatsappMessage);
+
+            window.open(whatsappURL, "_blank");
+
+            contactForm.reset();
     });
-
 }
 
 
