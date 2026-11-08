@@ -1,0 +1,135 @@
+/* CSS only. No HTML or JavaScript changes.
+   Easiest: paste this at the very bottom of your existing style.css.
+   Or save as theme.css and add <link rel="stylesheet" href="theme.css"> after your other stylesheet.
+
+   To change colours, edit only the variables below. Alternative palettes are listed underneath. */
+
+:root {
+  --bg:   #ffffff;   /* page background */
+  --bg2:  #f1f6f6;   /* alternate sections, footer */
+  --card: #ffffff;   /* cards */
+  --ink:  #0b2a2b;   /* headings and main text */
+  --mute: #4d6767;   /* paragraphs */
+  --line: #d5e3e3;   /* borders */
+  --a:    #0f766e;   /* main accent */
+  --b:    #0891b2;   /* second accent (gradients) */
+  --on:   #ffffff;   /* text on buttons */
+}
+/* Alternative palettes: copy one block over the values above.
+   Gold:  --bg:#121317; --bg2:#181a20; --card:#1e2028; --ink:#f5f1e8; --mute:#a9a49a; --line:#33353f; --a:#d4a84b; --b:#f0cf85; --on:#17130a;
+   Rose:  --bg:#151519; --bg2:#1b1b21; --card:#22222a; --ink:#f6f3f8; --mute:#aaa6b3; --line:#38384a; --a:#f472b6; --b:#a78bfa; --on:#1a0d18;
+   Royal: --bg:#f5f7ff; --bg2:#e9eeff; --card:#ffffff; --ink:#111a3a; --mute:#525b80; --line:#d5dcf5; --a:#1d4ed8; --b:#0ea5e9; --on:#ffffff; */
+
+html { scroll-behavior: smooth; }
+body { background: var(--bg) !important; color: var(--ink) !important; }
+
+/* Navigation */
+header, nav {
+  background: color-mix(in srgb, var(--bg) 90%, transparent) !important;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line) !important;
+  box-shadow: none !important;
+}
+nav a, header a { color: var(--mute) !important; position: relative; transition: color .2s; }
+nav a:hover, header a:hover { color: var(--a) !important; }
+nav a::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -4px; height: 2px;
+  background: linear-gradient(90deg, var(--a), var(--b));
+  transform: scaleX(0); transform-origin: left; transition: transform .3s;
+}
+nav a:hover::after { transform: scaleX(1); }
+
+/* Sections */
+section { background: var(--bg) !important; color: var(--ink) !important; }
+section:nth-of-type(even) { background: var(--bg2) !important; }
+#home {
+  background:
+    radial-gradient(900px 480px at 85% -10%, color-mix(in srgb, var(--a) 18%, transparent), transparent 60%),
+    radial-gradient(700px 380px at 0% 100%, color-mix(in srgb, var(--b) 16%, transparent), transparent 60%),
+    var(--bg) !important;
+}
+
+/* Text */
+h1 {
+  background: linear-gradient(90deg, var(--a), var(--b), var(--a));
+  background-size: 200% 100%;
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent !important;
+  animation: sheen 6s linear infinite;
+}
+h2 { color: var(--ink) !important; }
+h2::after {
+  content: ""; display: block; width: 56px; height: 4px; border-radius: 4px; margin-top: 10px;
+  background: linear-gradient(90deg, var(--a), var(--b));
+}
+#home h2 { color: var(--a) !important; }
+h3, h4 { color: var(--ink) !important; }
+p, li, small, dd { color: var(--mute); }
+a { color: var(--a); }
+::selection { background: var(--a); color: var(--on); }
+
+/* Cards */
+[class*="card"], [class*="project"], [class*="skill"], [class*="cert"],
+[class*="edu"], [class*="timeline"], [class*="box"] {
+  background: var(--card) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 14px;
+  color: var(--ink) !important;
+  transition: transform .25s, box-shadow .25s, border-color .25s;
+}
+[class*="card"]:hover, [class*="project"]:hover, [class*="skill"]:hover, [class*="cert"]:hover {
+  transform: translateY(-6px);
+  border-color: var(--a) !important;
+  box-shadow: 0 16px 34px color-mix(in srgb, var(--a) 28%, transparent) !important;
+}
+
+/* Buttons */
+a[class*="btn"], button, [class*="btn"] {
+  background: linear-gradient(90deg, var(--a), var(--b)) !important;
+  color: var(--on) !important;
+  border: 0 !important; border-radius: 10px; font-weight: 600;
+  transition: transform .2s, box-shadow .2s, filter .2s;
+}
+a[class*="btn"]:hover, button:hover, [class*="btn"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--a) 45%, transparent);
+  filter: brightness(1.08);
+}
+
+/* Forms and footer */
+input, textarea {
+  background: var(--card) !important; color: var(--ink) !important;
+  border: 1px solid var(--line) !important; border-radius: 10px;
+}
+input:focus, textarea:focus { outline: 2px solid var(--a); outline-offset: 2px; }
+footer { background: var(--bg2) !important; color: var(--mute) !important; border-top: 1px solid var(--line) !important; }
+:focus-visible { outline: 2px solid var(--a); outline-offset: 3px; }
+
+/* Animations (CSS only) */
+@keyframes sheen { to { background-position: -200% 0; } }
+@keyframes rise { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
+@keyframes float { 50% { transform: translateY(-14px); } }
+
+/* Hero: content rises in one piece at a time */
+#home h1, #home h2, #home p, #home a { animation: rise .8s cubic-bezier(.2,.7,.2,1) both; }
+#home h1 { animation: rise .8s cubic-bezier(.2,.7,.2,1) both, sheen 6s linear infinite; }
+#home h2 { animation-delay: .15s; }
+#home p  { animation-delay: .3s; }
+#home a  { animation-delay: .45s; }
+#home img { animation: float 6s ease-in-out infinite; }
+
+/* Sections reveal on scroll (Chrome, Edge, Safari; others simply show them) */
+@supports (animation-timeline: view()) {
+  section:not(#home) h2,
+  section:not(#home) [class*="card"], section:not(#home) [class*="project"],
+  section:not(#home) [class*="skill"], section:not(#home) [class*="cert"],
+  section:not(#home) [class*="edu"], section:not(#home) [class*="box"] {
+    animation: rise linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 40%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}

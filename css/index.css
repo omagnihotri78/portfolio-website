@@ -31,7 +31,6 @@ textarea {
     font-family: inherit;
 }
 
-
 /* =========================================================
    VARIABLES
 ========================================================= */
@@ -413,15 +412,15 @@ textarea {
 }
 
 .card-five {
-    top: 160px;
-    right: -30px;
+    top: 140px;
+    right: -20px;
 
     color: green;
 }
 
 .card-six {
-    top: 300px;
-    right: -50px;
+    bottom: 90px;
+    right: -20px;
 
     color: var(--accent);
 }
